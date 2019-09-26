@@ -1,0 +1,14 @@
+apiVersion: kubeadm.k8s.io/v1beta2
+kind: ClusterConfiguration
+kubernetesVersion: ${KUBE_VERSION}
+clusterName: kube-box
+controllerManager:
+  extraArgs:
+    cluster-cidr: ${KUBE_CLUSTER_CIDR}
+apiServer:
+  extraArgs:
+    advertise-address: ${KUBE_ADVERTISE_ADDRESS}
+    allow-privileged: "${KUBE_ALLOW_PRIVILEGED}"
+  certSANs:
+    - 127.0.0.1
+    - localhost
