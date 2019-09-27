@@ -12,3 +12,4 @@ fi
 printgreen "Installing kubernetes"
 source ./"${os_script}"
 printgreen "Completed installing kubernetes"
+source ./inspect.sh
