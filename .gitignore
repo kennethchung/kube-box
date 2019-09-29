@@ -1,6 +1,6 @@
 *.tgz
 *.tar.gz
-provision/terraform/**/*.tfstate.backup
-provision/terraform/**/*.tfstate
-provision/terraform/**/*.plan
-provision/**/runtimevars.sh
+provisioning/terraform/**/*.tfstate.backup
+provisioning/terraform/**/*.tfstate
+provisioning/terraform/**/*.plan
+provisioning/**/runtimevars.sh
