@@ -2,19 +2,18 @@
 
 source ./../../common/color-print.sh
 CURRENT_STEP=${PWD##*/}-${0##*/}
+source ./../100-kube-base/inspect.sh
 
-
-#source ./../100-kube-base/inspect.sh
 printgreen "create namespace kube-box"
 kubectl create namespace kube-box
-size=2
-count=0
+max=2
+count=1
 label=${PWD##*/}
 
-printgreen "deploying ngnix $size"
+printgreen "deploying $max ngnix(s)"
 svc_types=( clusterip nodeport)
 
-while [ "${count}" -lt "${size}" ]
+while [ "${count}" -le "${max}" ]
 do    
     for svc_type in "${svc_types[@]}"
     do
