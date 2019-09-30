@@ -2,16 +2,15 @@ apiVersion: kubeadm.k8s.io/v1beta2
 kind: ClusterConfiguration
 clusterName: kube-box
 networking:
-  podSubnet: 10.244.0.0/16
-  serviceSubnet: 10.96.0.0/12
-  dnsDomain: cluster.local
+  podSubnet: ${KUBE_CLUSTER_CIDR}
+  serviceSubnet: ${KUBE_SERVICE_ADDRESSES}
+  dnsDomain: ${KUBE_CLUSTER_DOMAIN}
 controllerManager:
   extraArgs:
-    cluster-cidr: 10.244.0.0/16
+    cluster-cidr: ${KUBE_CLUSTER_CIDR}
 apiServer:
   extraArgs:
     advertise-address: ${KUBE_ADVERTISE_ADDRESS}
   certSANs:
     - 127.0.0.1
     - localhost
-    
