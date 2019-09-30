@@ -6,6 +6,9 @@ CURRENT_STEP=${PWD##*/}-${0##*/}
 os_script=${os_script:-"ubuntu.sh"}
 
 printgreen "Uninstalling kubernetes"
+export HOSTNAME=$(hostname)
+kubectl drain "${HOSTNAME}" --delete-local-data --force --ignore-daemonsets
+kubectl delete node "${HOSTNAME}"
 
 # Reset kubeadm
 sudo kubeadm reset
@@ -21,7 +24,5 @@ sudo rm -rf /etc/kubernetes
 sudo rm -rf /var/lib/etcd/
 
 if [ "${os_script}" == "ubuntu.sh" ]; then
-    sudo apt remove -y kubelet
-    sudo apt remove -y kubectl
-    sudo apt remove -y kubeadm
+    sudo apt autoremove -y kubelet kubectl kubeadm
 fi
