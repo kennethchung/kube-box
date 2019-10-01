@@ -14,6 +14,7 @@ printgreen "verify pod to pod connections"
 svcs=($(kubectl get svc -l $label=true -n kube-box -o json | jq  '.items[]' | jq -rc '.metadata.name+"."+.metadata.namespace'))
 for svc in "${svcs[@]}"
 do
+   echo $svc
    resp=$(kubectl exec -it  busybox  --  wget -O - http://"${svc}")
    printgreen "${svc}"
    grep nginx <<< $resp

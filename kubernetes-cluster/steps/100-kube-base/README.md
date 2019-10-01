@@ -1,12 +1,11 @@
 # Steps
 - Create kube-config.yaml to override a few variables.
 - OS specific to install kubectl, kubeadm and kubectl.
-- run kubeadm init to perform pulling images and deployment kubernetes
+- Run kubeadm init to perform pulling images and deploying kubernetes
 - Inspect verify node, deployment and pod are available and read
 - Install busybox to verify kubernetes dns lookup
-```
-kubectl apply -f https://k8s.io/examples/admin/dns/busybox.yaml
-kubectl exec -ti busybox -- nslookup coredns.kube-system
+
+## The following indicates a successful kubenertes installation
 
 ```
 NAMESPACE     NAME                                       READY   STATUS    RESTARTS   AGE
@@ -36,4 +35,13 @@ kube-system   deployment.apps/coredns   2/2     2            2           82s
 
 NAMESPACE     NAME                                 DESIRED   CURRENT   READY   AGE
 kube-system   replicaset.apps/coredns-5644d7b6d9   2         2         2       68s
+```
+
+## The following indicates using busy box to perform dns on kubernetes cluster
+
+```
+kubectl apply -f https://k8s.io/examples/admin/dns/busybox.yaml
+kubectl exec -ti busybox -- nslookup coredns.kube-system.svc.cluster.local
+Server:    10.96.0.10
+Address 1: 10.96.0.10 kube-dns.kube-system.svc.cluster.local
 ```
