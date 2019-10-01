@@ -26,6 +26,7 @@ do
     (( count++ ))
 done
 
+source ./inspect.sh
 
 
 

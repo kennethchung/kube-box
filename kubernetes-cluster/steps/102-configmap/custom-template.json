@@ -1,0 +1,5 @@
+{  
+    "name":"${NAME}",
+    "namespace":"${NAMESPACE}",
+    "step":"${STEP}"
+}

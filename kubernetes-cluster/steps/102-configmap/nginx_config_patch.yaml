@@ -1,0 +1,20 @@
+
+spec:
+  template:
+    spec:
+      containers:
+      - name: nginx
+        command: ["/bin/sh","-c"]
+        args: ["mkdir p /usr/share/nginx/json && nginx -g 'daemon off;'"]
+        volumeMounts:
+        - name: my-config
+          mountPath: /etc/kube-box
+      volumes:
+      - name: my-config
+        configMap:
+          name: my-config
+          items:
+            - key: custom.conf
+              path: custom.conf
+            - key: custom.json
+              path: custom.json
