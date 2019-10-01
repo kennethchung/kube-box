@@ -54,7 +54,7 @@ kubectl exec -it  busybox  --  wget -O - http://nginx-nodeport-2.kube-box.svc.cl
 
 ```
 kubectl get svc -l svc_type=nodeport  -n kube-box -o json | jq  '.items[].spec.ports[0].nodePort'
-curl http://localhost:"${port}"
+curl http://privateip:"${port}"
 <!DOCTYPE html>
 <html>
 <head>
