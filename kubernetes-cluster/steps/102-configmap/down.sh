@@ -25,3 +25,4 @@ done
 kubectl wait --for=condition=available -n kube-box deployment --all --timeout=120s
 # verify kube-box  pods
 kubectl wait --for=condition=ready -n kube-box pod --all --timeout=120s
+rm -f custom.json
