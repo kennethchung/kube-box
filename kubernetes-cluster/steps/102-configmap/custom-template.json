@@ -1,5 +1,5 @@
 {  
-    "name":"${NAME}",
-    "namespace":"${NAMESPACE}",
+    "name":"${POD_NAME}",
+    "namespace":"${POD_NAMESPACE}",
     "step":"${STEP}"
 }

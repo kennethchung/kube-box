@@ -15,9 +15,8 @@ spec:
               fieldPath: metadata.name
         command: ["/bin/sh","-c"]
         args: ["mkdir -p /usr/share/nginx/json && \
-                envsubst '$POD_NAMESPACE $POD_NAME' < /etc/kube-box/custom.json > /usr/share/nginx/json/custom.json && \
-                cp  /etc/kube-box/custom.conf /etc/nginx/conf.d/custom.conf  && \
-                mv  /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.not_conf  2>/dev/null; true && \
+                rm -f /etc/nginx/conf.d/custom.conf  && \
+                mv  /etc/nginx/conf.d/default.not_conf /etc/nginx/conf.d/default.conf  2>/dev/null; true && \
                 nginx -g 'daemon off;'"]
         volumeMounts:
         - name: configmap-102
@@ -26,8 +25,4 @@ spec:
       - name: configmap-102
         configMap:
           name: configmap-102
-          items:
-            - key: custom.conf
-              path: custom.conf
-            - key: custom.json
-              path: custom.json
+
