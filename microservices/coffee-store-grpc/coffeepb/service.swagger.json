@@ -15,14 +15,14 @@
     "application/json"
   ],
   "paths": {
-    "/v1/Coffee": {
+    "/v1/coffee": {
       "get": {
-        "operationId": "CoffeeMenu",
+        "operationId": "GetCoffeeMenu",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/CoffeepbCoffeeMenuItems"
+              "$ref": "#/definitions/coffeepbCoffeeMenuItems"
             }
           }
         },
@@ -36,7 +36,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/CoffeepbCoffeeResponse"
+              "$ref": "#/definitions/coffeepbCoffeeResponse"
             }
           }
         },
@@ -47,7 +47,7 @@
     }
   },
   "definitions": {
-    "CoffeepbCoffeeItem": {
+    "coffeepbCoffeeItem": {
       "type": "object",
       "properties": {
         "name": {
@@ -62,18 +62,18 @@
         }
       }
     },
-    "CoffeepbCoffeeMenuItems": {
+    "coffeepbCoffeeMenuItems": {
       "type": "object",
       "properties": {
         "items": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/CoffeepbCoffeeItem"
+            "$ref": "#/definitions/coffeepbCoffeeItem"
           }
         }
       }
     },
-    "CoffeepbCoffeeResponse": {
+    "coffeepbCoffeeResponse": {
       "type": "object",
       "properties": {
         "message": {

@@ -2,11 +2,11 @@
 // source: service.proto
 
 /*
-Package Coffeepb is a reverse proxy.
+Package kubebox_coffeepb is a reverse proxy.
 
 It translates gRPC into RESTful JSON APIs.
 */
-package Coffeepb
+package kubebox_coffeepb
 
 import (
 	"context"
@@ -31,20 +31,20 @@ var _ = runtime.String
 var _ = utilities.NewDoubleArray
 var _ = descriptor.ForMessage
 
-func request_CoffeeService_CoffeeMenu_0(ctx context.Context, marshaler runtime.Marshaler, client CoffeeServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_CoffeeService_GetCoffeeMenu_0(ctx context.Context, marshaler runtime.Marshaler, client CoffeeServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq CoffeeMenuRequest
 	var metadata runtime.ServerMetadata
 
-	msg, err := client.CoffeeMenu(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.GetCoffeeMenu(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func local_request_CoffeeService_CoffeeMenu_0(ctx context.Context, marshaler runtime.Marshaler, server CoffeeServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func local_request_CoffeeService_GetCoffeeMenu_0(ctx context.Context, marshaler runtime.Marshaler, server CoffeeServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq CoffeeMenuRequest
 	var metadata runtime.ServerMetadata
 
-	msg, err := server.CoffeeMenu(ctx, &protoReq)
+	msg, err := server.GetCoffeeMenu(ctx, &protoReq)
 	return msg, metadata, err
 
 }
@@ -87,7 +87,7 @@ func local_request_CoffeeService_OrderCoffee_0(ctx context.Context, marshaler ru
 // StreamingRPC :currently unsupported pending https://github.com/grpc/grpc-go/issues/906.
 func RegisterCoffeeServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux, server CoffeeServiceServer) error {
 
-	mux.Handle("GET", pattern_CoffeeService_CoffeeMenu_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_CoffeeService_GetCoffeeMenu_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
@@ -96,14 +96,14 @@ func RegisterCoffeeServiceHandlerServer(ctx context.Context, mux *runtime.ServeM
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_CoffeeService_CoffeeMenu_0(rctx, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_CoffeeService_GetCoffeeMenu_0(rctx, inboundMarshaler, server, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_CoffeeService_CoffeeMenu_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_CoffeeService_GetCoffeeMenu_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -168,7 +168,7 @@ func RegisterCoffeeServiceHandler(ctx context.Context, mux *runtime.ServeMux, co
 // "CoffeeServiceClient" to call the correct interceptors.
 func RegisterCoffeeServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux, client CoffeeServiceClient) error {
 
-	mux.Handle("GET", pattern_CoffeeService_CoffeeMenu_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_CoffeeService_GetCoffeeMenu_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
@@ -177,14 +177,14 @@ func RegisterCoffeeServiceHandlerClient(ctx context.Context, mux *runtime.ServeM
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_CoffeeService_CoffeeMenu_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_CoffeeService_GetCoffeeMenu_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_CoffeeService_CoffeeMenu_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_CoffeeService_GetCoffeeMenu_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -212,13 +212,13 @@ func RegisterCoffeeServiceHandlerClient(ctx context.Context, mux *runtime.ServeM
 }
 
 var (
-	pattern_CoffeeService_CoffeeMenu_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "Coffee"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_CoffeeService_GetCoffeeMenu_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "coffee"}, "", runtime.AssumeColonVerbOpt(true)))
 
-	pattern_CoffeeService_OrderCoffee_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "Coffee"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_CoffeeService_OrderCoffee_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "coffee"}, "", runtime.AssumeColonVerbOpt(true)))
 )
 
 var (
-	forward_CoffeeService_CoffeeMenu_0 = runtime.ForwardResponseMessage
+	forward_CoffeeService_GetCoffeeMenu_0 = runtime.ForwardResponseMessage
 
 	forward_CoffeeService_OrderCoffee_0 = runtime.ForwardResponseMessage
 )

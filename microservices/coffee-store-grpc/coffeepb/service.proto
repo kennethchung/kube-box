@@ -1,12 +1,7 @@
 syntax = "proto3";
-package Coffeepb;
+package kubebox.coffeepb;
 
 import "google/api/annotations.proto";
-
-message CoffeeMessage {
- string value = 1;
-}
-
 
 message CoffeeItem {
   string name = 1;
@@ -17,7 +12,6 @@ message CoffeeItem {
 message CoffeeMenuItems {
   repeated CoffeeItem items = 1;
 }
-
 
 
 message CoffeeMenuRequest {}
@@ -35,14 +29,15 @@ message CoffeeResponse {
 
 
 service CoffeeService {
-  rpc CoffeeMenu(CoffeeMenuRequest) returns (CoffeeMenuItems) {
+
+  rpc GetCoffeeMenu(CoffeeMenuRequest) returns (CoffeeMenuItems) {
     option (google.api.http) = {
-      get: "/v1/Coffee"
+      get: "/v1/coffee"
     };
   }
   rpc OrderCoffee(CoffeeOrder) returns (CoffeeResponse) {
     option (google.api.http) = {
-      put: "/v1/Coffee"
+      put: "/v1/coffee"
     };
   }
 }
