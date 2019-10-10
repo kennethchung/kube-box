@@ -1,0 +1,89 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "service.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v1/coffee": {
+      "get": {
+        "operationId": "GetCoffeeMenu",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/coffeepbCoffeeMenuItems"
+            }
+          }
+        },
+        "tags": [
+          "CoffeeService"
+        ]
+      },
+      "put": {
+        "operationId": "OrderCoffee",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/coffeepbCoffeeResponse"
+            }
+          }
+        },
+        "tags": [
+          "CoffeeService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "coffeepbCoffeeItem": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "price": {
+          "type": "string"
+        },
+        "calories": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "coffeepbCoffeeMenuItems": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/coffeepbCoffeeItem"
+          }
+        }
+      }
+    },
+    "coffeepbCoffeeResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    }
+  }
+}

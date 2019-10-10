@@ -4,3 +4,4 @@ provisioning/terraform/**/*.tfstate.backup
 provisioning/terraform/**/*.tfstate
 provisioning/terraform/**/*.plan
 provisioning/**/runtimevars.sh
+**/go.sum
