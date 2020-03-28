@@ -1,6 +1,6 @@
 # kube-box
 
-The purpose of this repo is to stand up a kubernetes cluster and deploy microservices.
+The purpose of this repo is to stand up a kubernetes cluster and deploy microservices
 
 ## Provisoning
 
